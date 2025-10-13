@@ -12,6 +12,10 @@ const Navbar = () => {
     }
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+  }
+
   return (
     <>
       <nav className="z-50 flex items-center justify-between w-full py-4 px-6 md:px-16 text-sm text-base-content">
@@ -42,27 +46,32 @@ const Navbar = () => {
           </Link>
         </div> */}
         <div className="flex gap-2">
-      <a
+      
+      {user ? (
+        <div className="flex gap-2 items-center">
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn m-1 hidden md:inline-flex btn btn-outline rounded-full">{user.fullname}</div>
+          <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-fit p-2 shadow-sm">
+            <li><Link to="/profile">Profile</Link></li>
+            <li><button type="button" className="text-primary" onClick={()=>handleLogout()}>Log Out</button></li>
+          </ul>
+        </div>
+        </div>
+      ) : (
+        <>
+        <a
         href=""
         className="hidden md:inline-flex btn btn-primary rounded-full"
       >
         Get started
       </a>
-
-      {user ? (
-        <Link
-          to="/profile"
-          className="hidden md:inline-flex btn btn-outline rounded-full"
-        >
-          {user.fullname}
-        </Link>
-      ) : (
         <Link
           to="/login"
           className="hidden md:inline-flex btn btn-outline rounded-full"
         >
           Login
         </Link>
+        </>
       )}
     </div>
 

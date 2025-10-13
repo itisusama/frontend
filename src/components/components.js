@@ -2,5 +2,7 @@ import HeroSection from "./sections/HeroSecton";
 import Navbar from "./Navbar";
 import SectionTitle from "./SectionTitle";
 import RecentSection from "./sections/RecentSection";
+import ProfileHeader from "./sections/ProfileHeader";
+import ProfileTabs from "./sections/ProfileTabs"
 
-export { HeroSection, Navbar, SectionTitle, RecentSection }
+export { HeroSection, Navbar, SectionTitle, RecentSection, ProfileHeader, ProfileTabs }
