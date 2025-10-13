@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Mail, Lock, LogIn } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
@@ -13,6 +13,12 @@ const Login = () => {
   });
   const [error, setError] = useState("");
 
+   useEffect(() => {
+    // If already logged in, redirect to profile
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) navigate("/profile");
+  }, [navigate]);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setError("");
@@ -26,7 +32,11 @@ const Login = () => {
     );
 
     if (foundUser) {
-      navigate("/");
+      // ✅ Save user in localStorage
+      localStorage.setItem("user", JSON.stringify(foundUser));
+
+      // ✅ Redirect to profile
+      navigate("/profile");
     } else {
       setError("Invalid email or password");
     }

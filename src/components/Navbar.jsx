@@ -1,8 +1,16 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("user");
+    if (stored) {
+      setUser(JSON.parse(stored));
+    }
+  }, []);
 
   return (
     <>
@@ -19,7 +27,7 @@ const Navbar = () => {
           <a href="#cta" className="hover:text-primary transition">Contact</a>
         </div>
 
-        <div className="flex gap-2">
+        {/* <div className="flex gap-2">
           <a
             href=""
             className="hidden md:inline-flex btn btn-primary rounded-full"
@@ -32,7 +40,31 @@ const Navbar = () => {
           >
             Login
           </Link>
-        </div>
+        </div> */}
+        <div className="flex gap-2">
+      <a
+        href=""
+        className="hidden md:inline-flex btn btn-primary rounded-full"
+      >
+        Get started
+      </a>
+
+      {user ? (
+        <Link
+          to="/profile"
+          className="hidden md:inline-flex btn btn-outline rounded-full"
+        >
+          {user.fullname}
+        </Link>
+      ) : (
+        <Link
+          to="/login"
+          className="hidden md:inline-flex btn btn-outline rounded-full"
+        >
+          Login
+        </Link>
+      )}
+    </div>
 
         <button
           onClick={() => setMenuOpen(true)}
