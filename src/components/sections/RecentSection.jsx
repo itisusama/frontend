@@ -1,6 +1,6 @@
 import React from "react";
 import { novels } from "../../data/novels";
-
+import { Button } from "../components";
 // Parse dates like "16-Sep-25" into a real Date (assumes 20YY for two-digit years < 70)
 const parsePostedDate = (str) => {
   if (!str) return new Date(0);
@@ -68,14 +68,12 @@ const RecentSection = () => {
               </div>
 
               <div className="card-actions mt-3">
-                <a
-                  href={novel.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary btn-sm"
+                <Button
+                  variant="primary"
+                  className="btn-sm"
                 >
                   Read now
-                </a>
+                </Button>
               </div>
             </div>
           </article>

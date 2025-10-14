@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import SectionTitle from "./SectionTitle";
 import RecentSection from "./sections/RecentSection";
 import ProfileHeader from "./sections/ProfileHeader";
-import ProfileTabs from "./sections/ProfileTabs"
+import ProfileTabs from "./sections/ProfileTabs";
+import Button from "./ui/Button";
 
-export { HeroSection, Navbar, SectionTitle, RecentSection, ProfileHeader, ProfileTabs }
+export { HeroSection, Navbar, SectionTitle, RecentSection, ProfileHeader, ProfileTabs, Button }

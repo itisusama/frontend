@@ -1,3 +1,4 @@
+import { Button } from "../components";
 const HeroSection = () => {
   return (
     <>
@@ -23,9 +24,9 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex items-center gap-3">
-            <a
-              href="/"
-              className="bg-primary hover:bg-primary/90 text-primary-content rounded-full px-8 h-12 m-1 ring-1 ring-primary/40 ring-offset-2 flex items-center transition-colors"
+            <Button
+              variant="primary"
+              className="hover:bg-primary/90 text-primary-content px-8 h-12 m-1 ring-1 ring-primary/40 ring-offset-2 flex items-center transition-colors"
             >
               Start writing
               <svg
@@ -44,7 +45,7 @@ const HeroSection = () => {
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
               </svg>
-            </a>
+            </Button>
           </div>
 
           <div className="mt-6 text-xs text-base-content/60">
