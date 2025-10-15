@@ -11,12 +11,14 @@ const Navbar = () => {
     const stored = localStorage.getItem("user");
     if (stored) {
       setUser(JSON.parse(stored));
-      navigate("/");
     }
   }, []);
 
+
   const handleLogout = () => {
     localStorage.removeItem("user");
+    setUser(null);
+    navigate("/");
   }
 
   const navItems = [{ name: "Home", href: "/" },{ name: "Features", href: "/features" },{ name: "Testimonials", href: "/testimonials" },{ name: "Contact", href: "/contact" },];
