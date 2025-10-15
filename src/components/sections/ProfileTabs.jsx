@@ -1,11 +1,6 @@
-import React, { useMemo, useState } from "react";
-import {
-  User,
-  FileText,
-  Ghost,
-  BarChart3,
-  Sparkles,
-} from "lucide-react";
+import { useMemo, useState } from "react";
+import {User, FileText, Ghost, BarChart3, Sparkles} from "lucide-react";
+import { ProfileContent } from "../components";
 
 const ProfileTabs = ({
   className = "",
@@ -64,11 +59,7 @@ const ProfileTabs = ({
             className="rounded-box border border-base-300 bg-base-100 p-4"
           >
             {panels.profile ?? (
-              <EmptyPanel
-                icon={<User className="text-primary" size={18} />}
-                title="Profile"
-                text="Your profile content goes here."
-              />
+              <Content><ProfileContent/></Content>
             )}
           </div>
 
@@ -81,11 +72,7 @@ const ProfileTabs = ({
             className="rounded-box border border-base-300 bg-base-100 p-4"
           >
             {panels.drafts ?? (
-              <EmptyPanel
-                icon={<FileText className="text-secondary" size={18} />}
-                title="Drafts"
-                text="You don't have any drafts yet."
-              />
+              <Content>Content Goes Here</Content>
             )}
           </div>
 
@@ -98,11 +85,7 @@ const ProfileTabs = ({
             className="rounded-box border border-base-300 bg-base-100 p-4"
           >
             {panels.anonymous ?? (
-              <EmptyPanel
-                icon={<Ghost className="text-accent" size={18} />}
-                title="Anonymous"
-                text="Anonymous posts and activity will appear here."
-              />
+              <Content>Content Goes Here</Content>
             )}
           </div>
 
@@ -115,11 +98,7 @@ const ProfileTabs = ({
             className="rounded-box border border-base-300 bg-base-100 p-4"
           >
             {panels.stats ?? (
-              <EmptyPanel
-                icon={<BarChart3 className="text-info" size={18} />}
-                title="Stats"
-                text="Your engagement and read stats will show up here."
-              />
+              <Content>Content Goes Here</Content>
             )}
           </div>
 
@@ -132,11 +111,7 @@ const ProfileTabs = ({
             className="rounded-box border border-base-300 bg-base-100 p-4"
           >
             {panels.recommended ?? (
-              <EmptyPanel
-                icon={<Sparkles className="text-success" size={18} />}
-                title="Recommended"
-                text="Recommended posts and users for you."
-              />
+              <Content>Content Goes Here</Content>
             )}
           </div>
         </div>
@@ -145,13 +120,9 @@ const ProfileTabs = ({
   );
 };
 
-const EmptyPanel = ({ icon, title, text }) => (
+const Content = ({ children }) => (
   <div className="flex items-center gap-3 text-base-content/80">
-    <div className="p-2 rounded-full bg-base-200">{icon}</div>
-    <div className="flex flex-col">
-      <span className="font-medium">{title}</span>
-      <span className="text-sm">{text}</span>
-    </div>
+    {children}
   </div>
 );
 
