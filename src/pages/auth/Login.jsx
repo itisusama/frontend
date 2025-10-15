@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { Mail, Lock, LogIn } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
 import { users } from "../../data/users";
+import { useAuth } from "../../context/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -24,7 +26,7 @@ const Login = () => {
     setError("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const foundUser = users.find(
       (user) =>
@@ -33,7 +35,7 @@ const Login = () => {
 
     if (foundUser) {
       // ✅ Save user in localStorage
-      localStorage.setItem("user", JSON.stringify(foundUser));
+      await login(foundUser);
 
       // ✅ Redirect to profile
       navigate("/profile");
